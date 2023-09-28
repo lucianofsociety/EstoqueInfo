@@ -18,11 +18,11 @@ public class ProdutoDAO {
         this.gerenciador = GerenciadorConexao.getInstancia();
     }
 
-    public boolean autenticar(String codigo, String senha) {
-        String sql = "SELECT * from TBPRODUTO WHERE codProd = ? and senhaLogin = ?";
+    public boolean autenticar(String login, String senha) {
+        String sql = "SELECT * from TBPRODUTO WHERE login = ? and senhaLogin = ?";
         try {
             PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
-            stmt.setString(1, codigo);
+            stmt.setString(1, login);
             stmt.setString(2, senha);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -34,16 +34,14 @@ public class ProdutoDAO {
         return false;
     }
 
-    public boolean adicionarProduto(String nome, String cod, String senha, String quant, String estoqu) {
-        String sql = "INSERT INTO TBPRODUTO (nomeProd, codProd, senhaLogin, quantProd, estoquProd)"
-                + "VALUES (?,?,?,?,?)";
+    public boolean adicionarProduto(String nome, String cod, String estoqu) {
+        String sql = "INSERT INTO TBPRODUTO (nomeProd, codProd, estoquProd)"
+                + "VALUES (?,?,?)";
         try {
             PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setString(2, cod);
-            stmt.setString(3, senha);
-            stmt.setString(4, quant);
-            stmt.setString(5, estoqu);
+            stmt.setString(3, estoqu);
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto: " + nome + " Inserido com sucesso! ");
             return true;
@@ -52,7 +50,25 @@ public class ProdutoDAO {
         }
         return false;
     }
-
+    
+    
+     public boolean lançarProduto(String nome, String quant) {
+        String sql = "INSERT INTO TBPRODUTO (nomeProd, quantProd)"
+                + "VALUES (?,?)";
+        try {
+            PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, quant);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Lançamento: " + nome + " Inserido com sucesso! ");
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
+        }
+        return false;
+    }
+    
+    
     public List<Produto> read() {
         String sql = "SELECT * FROM tbproduto";
         List<Produto> produtos = new ArrayList<>();
@@ -72,7 +88,8 @@ public class ProdutoDAO {
                 produto.setCodProd(rs.getString("codprod"));
                 produto.setSenhaLogin(rs.getString("senhalogin"));
                 produto.setQuantProd(rs.getString("quantprod"));
-                produto.setEstoquProd(rs.getString("estoqueprod"));
+                produto.setEstoquProd(rs.getString("estoquprod"));
+                produto.setEstoquProd(rs.getString("login"));
 
                 produtos.add(produto);
             }
@@ -85,7 +102,7 @@ public class ProdutoDAO {
     }
     
     public List<Produto> readForDesc(String desc){
-        String sql = "SELECT * FROM tbproduto WHERE nomeproduto LIKE ?";
+        String sql = "SELECT * FROM tbproduto WHERE nomeprod LIKE ?";
         GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
@@ -103,11 +120,12 @@ public class ProdutoDAO {
                 Produto produto = new Produto();
                 
                 produto.setPkProduto(rs.getInt("pkproduto"));
-                produto.setNomeProd(rs.getString("nomeproduto"));
+                produto.setNomeProd(rs.getString("nomeprod"));
                 produto.setCodProd(rs.getString("codprod"));
                 produto.setSenhaLogin(rs.getString("senhalogin"));
                 produto.setQuantProd(rs.getString("quantprod"));
                 produto.setEstoquProd(rs.getString("estoquprod"));
+                produto.setEstoquProd(rs.getString("login"));
                 produtos.add(produto);
             }
         }catch (SQLException ex){
@@ -143,7 +161,7 @@ public class ProdutoDAO {
                 produto.setSenhaLogin(rs.getString("senhalogin"));
                 produto.setQuantProd(rs.getString("quantprod"));
                 produto.setEstoquProd(rs.getString("estoquprod"));
-                
+                produto.setEstoquProd(rs.getString("login"));
             }
         }catch (SQLException ex){
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE,null, ex);
@@ -167,6 +185,7 @@ public class ProdutoDAO {
             stmt.setString(3,u.getSenhaLogin());
             stmt.setString(4,u.getQuantProd());
             stmt.setString(5,u.getEstoquProd());
+            stmt.setString(5,u.getLogin());
             stmt.setInt(6,u.getPkProduto());
             
             stmt.executeUpdate();

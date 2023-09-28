@@ -39,9 +39,7 @@ public class FRCadProd extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtQuantidade = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JPasswordField();
+        txtEstoqueInicial = new javax.swing.JTextField();
         BTSalvar = new javax.swing.JButton();
         BTCancelar = new javax.swing.JButton();
 
@@ -64,15 +62,13 @@ public class FRCadProd extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("QUANTIDADE");
+        jLabel5.setText("ESTOQUE INICIAL");
 
-        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+        txtEstoqueInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidadeActionPerformed(evt);
+                txtEstoqueInicialActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("SENHA");
 
         BTSalvar.setText("SALVAR");
         BTSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,14 +96,12 @@ public class FRCadProd extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstoqueInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(BTSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                             .addComponent(BTCancelar))
-                        .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,12 +128,8 @@ public class FRCadProd extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(txtEstoqueInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,15 +181,9 @@ public class FRCadProd extends javax.swing.JFrame {
             return false;
         }
         
-        if (!txtQuantidade.getText().matches("^[0-100]{100}$")) {
+        if (!txtEstoqueInicial.getText().matches("^[0-100]{100}$")) {
             JOptionPane.showMessageDialog(null,
-                    "Campo 'Quantidade' possui formato inválidos"+ "EX: 0");
-            return false;
-        }
-        
-        char[] senha = txtSenha.getPassword();
-        if(new String (senha).length() <8){
-            JOptionPane.showMessageDialog(null,"Campo 'senha' deve ser maior que 8 caracteres");
+                    "Campo 'Estoque Inicial' possui formato inválidos"+ "EX: 0");
             return false;
         }
         return true;
@@ -211,9 +195,9 @@ public class FRCadProd extends javax.swing.JFrame {
         }
         //salvar
         ProdutoController controller = new ProdutoController();
-        String senha = new String(txtSenha.getPassword());
+        
         if(controller.adicionarProduto(txtNome.getText(), txtCodigo.getText(),
-                txtQuantidade.getText(),senha)){
+                txtEstoqueInicial.getText())){
                 this.dispose();
         };
             
@@ -223,9 +207,9 @@ public class FRCadProd extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BTSalvarActionPerformed
 
-    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+    private void txtEstoqueInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstoqueInicialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantidadeActionPerformed
+    }//GEN-LAST:event_txtEstoqueInicialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,11 +254,9 @@ public class FRCadProd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtEstoqueInicial;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtQuantidade;
-    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

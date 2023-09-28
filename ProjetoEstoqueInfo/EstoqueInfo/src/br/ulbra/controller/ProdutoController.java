@@ -22,8 +22,9 @@ public class ProdutoController {
         }
     }
 
-    public boolean adicionarProduto(String nome, String cod, String senha, String quant, String estoqu) {
-        return produtoDAO.adicionarProduto(nome, cod, senha, quant, estoqu);
+    public boolean adicionarProduto(String nome, String cod
+            , String estoqu) {
+        return produtoDAO.adicionarProduto(nome, cod, estoqu);
     }
     
     public List<Produto> readForDesc(String desc){
@@ -34,7 +35,7 @@ public class ProdutoController {
         return produtoDAO.readForPk(pk);
     }
      
-     public boolean alterarUsuario(Produto u){
+     public boolean alterarProduto(Produto u){
          return produtoDAO.alterarProduto(u);
      }
      

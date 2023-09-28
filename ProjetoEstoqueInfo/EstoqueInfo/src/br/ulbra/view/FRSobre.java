@@ -70,6 +70,11 @@ public class FRSobre extends javax.swing.JFrame {
                 BTVoltarMouseClicked(evt);
             }
         });
+        BTVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTVoltarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/packaging_icon.png"))); // NOI18N
 
@@ -151,6 +156,10 @@ public class FRSobre extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_BTGitHubMouseClicked
+
+    private void BTVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTVoltarActionPerformed
 
     /**
      * @param args the command line arguments

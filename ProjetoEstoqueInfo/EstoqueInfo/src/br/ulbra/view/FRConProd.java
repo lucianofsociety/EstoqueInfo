@@ -104,6 +104,11 @@ public class FRConProd extends javax.swing.JFrame {
                 BTVoltarMouseClicked(evt);
             }
         });
+        BTVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,6 +217,10 @@ public class FRConProd extends javax.swing.JFrame {
     private void BTVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTVoltarMouseClicked
        
     }//GEN-LAST:event_BTVoltarMouseClicked
+
+    private void BTVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTVoltarActionPerformed
 
     /**
      * @param args the command line arguments
