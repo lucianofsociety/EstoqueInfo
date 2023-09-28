@@ -8,6 +8,17 @@ public class Produto {
     private String quantProd;
     private String estoquProd;
     private String senhaLogin;
+    private String login;
+    
+    
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
 
     public String getEstoquProd() {
         return estoquProd;
@@ -60,9 +71,9 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "USUARIO (" + "pkProduto+" + pkProduto + ",nomeProd+" + nomeProd
+        return ",senhaLogin+" + "PRODUTO (" + ",nomeProd+" + nomeProd
                 + ",codProd+" + codProd + ",quantProd+" + quantProd
-                + ",senhaLogin+" + senhaLogin + );
+                + ",estoquProd+" + estoquProd + senhaLogin + ",senhaLogin+"+ login + ",login+";
     }
 
 }
