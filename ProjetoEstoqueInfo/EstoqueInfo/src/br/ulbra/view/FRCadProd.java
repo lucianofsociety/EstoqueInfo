@@ -42,6 +42,7 @@ public class FRCadProd extends javax.swing.JFrame {
         txtEstoqueInicial = new javax.swing.JTextField();
         BTSalvar = new javax.swing.JButton();
         BTCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ulbra - Cadastro de Usuario");
@@ -49,7 +50,7 @@ public class FRCadProd extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel2.setText("Cadastro de Produtos");
 
         jLabel3.setText("NOME");
@@ -88,36 +89,48 @@ public class FRCadProd extends javax.swing.JFrame {
                 BTCancelarMouseClicked(evt);
             }
         });
+        BTCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTCancelarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/novo produto_icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEstoqueInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(BTSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                            .addComponent(BTSalvar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BTCancelar))
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(34, 34, 34)
-                            .addComponent(jLabel2))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel2))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)))
+                .addGap(41, 41, 41)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,10 +142,10 @@ public class FRCadProd extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEstoqueInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BTSalvar)
+                    .addComponent(BTCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -151,7 +164,7 @@ public class FRCadProd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void BTCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTCancelarMouseClicked
@@ -175,13 +188,13 @@ public class FRCadProd extends javax.swing.JFrame {
             return false;
         }
         
-        if (!txtCodigo.getText().matches("^[a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._]+$")) {
+        if (!txtCodigo.getText().matches("^[0-9]+$")) {
             JOptionPane.showMessageDialog(null,
-                    "Campo 'Codigo' possui caracteres inválidos");
+                    "Campo 'Codigo'  inválidos");
             return false;
         }
         
-        if (!txtEstoqueInicial.getText().matches("^[0-100]{100}$")) {
+        if (!txtEstoqueInicial.getText().matches("^[0-9]+$")) {
             JOptionPane.showMessageDialog(null,
                     "Campo 'Estoque Inicial' possui formato inválidos"+ "EX: 0");
             return false;
@@ -210,6 +223,10 @@ public class FRCadProd extends javax.swing.JFrame {
     private void txtEstoqueInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstoqueInicialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEstoqueInicialActionPerformed
+
+    private void BTCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,6 +267,7 @@ public class FRCadProd extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTCancelar;
     private javax.swing.JButton BTSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

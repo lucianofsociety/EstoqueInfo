@@ -18,22 +18,6 @@ public class ProdutoDAO {
         this.gerenciador = GerenciadorConexao.getInstancia();
     }
 
-    public boolean autenticar(String login, String senha) {
-        String sql = "SELECT * from TBPRODUTO WHERE login = ? and senhaLogin = ?";
-        try {
-            PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
-            stmt.setString(1, login);
-            stmt.setString(2, senha);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return true;
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return false;
-    }
-
     public boolean adicionarProduto(String nome, String cod, String estoqu) {
         String sql = "INSERT INTO TBPRODUTO (nomeProd, codProd, estoquProd)"
                 + "VALUES (?,?,?)";
@@ -53,7 +37,7 @@ public class ProdutoDAO {
     
     
      public boolean lançarProduto(String nome, String quant) {
-        String sql = "INSERT INTO TBPRODUTO (nomeProd, quantProd)"
+        String sql = "INSERT INTO TBPRODUTO (nomeProd)"
                 + "VALUES (?,?)";
         try {
             PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
@@ -86,10 +70,7 @@ public class ProdutoDAO {
                 produto.setPkProduto(rs.getInt("pkproduto"));
                 produto.setNomeProd(rs.getString("nomeprod"));
                 produto.setCodProd(rs.getString("codprod"));
-                produto.setSenhaLogin(rs.getString("senhalogin"));
-                produto.setQuantProd(rs.getString("quantprod"));
                 produto.setEstoquProd(rs.getString("estoquprod"));
-                produto.setEstoquProd(rs.getString("login"));
 
                 produtos.add(produto);
             }
@@ -122,10 +103,7 @@ public class ProdutoDAO {
                 produto.setPkProduto(rs.getInt("pkproduto"));
                 produto.setNomeProd(rs.getString("nomeprod"));
                 produto.setCodProd(rs.getString("codprod"));
-                produto.setSenhaLogin(rs.getString("senhalogin"));
-                produto.setQuantProd(rs.getString("quantprod"));
                 produto.setEstoquProd(rs.getString("estoquprod"));
-                produto.setEstoquProd(rs.getString("login"));
                 produtos.add(produto);
             }
         }catch (SQLException ex){
@@ -158,10 +136,7 @@ public class ProdutoDAO {
                 produto.setPkProduto(rs.getInt("pkproduto"));
                 produto.setNomeProd(rs.getString("nomeprod"));
                 produto.setCodProd(rs.getString("codprod"));
-                produto.setSenhaLogin(rs.getString("senhalogin"));
-                produto.setQuantProd(rs.getString("quantprod"));
                 produto.setEstoquProd(rs.getString("estoquprod"));
-                produto.setEstoquProd(rs.getString("login"));
             }
         }catch (SQLException ex){
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE,null, ex);
@@ -179,14 +154,11 @@ public class ProdutoDAO {
         
         try{
             stmt = con.prepareStatement("UPDATE tbProduto SET nomeproduto = ?,codprod = ?,"
-                    +"senhalogin = ?, quantprod = ?, estoquprod = ? WHERE pkproduto = ?");
+                    +", estoquprod = ? WHERE pkproduto = ?");
             stmt.setString(1,u.getNomeProd());
             stmt.setString(2,u.getCodProd());
-            stmt.setString(3,u.getSenhaLogin());
-            stmt.setString(4,u.getQuantProd());
-            stmt.setString(5,u.getEstoquProd());
-            stmt.setString(5,u.getLogin());
-            stmt.setInt(6,u.getPkProduto());
+            stmt.setString(3,u.getEstoquProd());
+            stmt.setInt(4,u.getPkProduto());
             
             stmt.executeUpdate();
             

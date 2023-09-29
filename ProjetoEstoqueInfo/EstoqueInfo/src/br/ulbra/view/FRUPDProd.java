@@ -52,7 +52,7 @@ public class FRUPDProd extends javax.swing.JFrame {
         txtEstoqu = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ulbra");
+        setTitle("Atualizar Estoque");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -158,7 +158,7 @@ public class FRUPDProd extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEstoqu, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,13 +214,13 @@ public class FRUPDProd extends javax.swing.JFrame {
         }
 
         if (txtCod.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Campo 'Email' em branco");
+            JOptionPane.showMessageDialog(null, "Campo 'Codigo' em branco");
             return false;
         }
 
         if (!txtCod.getText().matches("^[a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._]+$")) {
             JOptionPane.showMessageDialog(null,
-                    "Campo 'Email' possui caracteres inválidos");
+                    "Campo 'Codigo'  inválido");
             return false;
         }
         return true;
@@ -257,7 +257,7 @@ public class FRUPDProd extends javax.swing.JFrame {
     }//GEN-LAST:event_BTExcluirMouseClicked
 
     private void BTVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTVoltarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BTVoltarActionPerformed
 
     private void txtEstoquActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstoquActionPerformed
