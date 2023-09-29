@@ -3,7 +3,6 @@ package br.ulbra.controller;
 import br.ulbra.model.Produto;
 import br.ulbra.model.ProdutoDAO;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 public class ProdutoController {
 
@@ -11,15 +10,6 @@ public class ProdutoController {
 
     public ProdutoController() {
         produtoDAO = new ProdutoDAO();
-    }
-
-    public boolean autenticar(String cod, String senha) {
-        if (produtoDAO.autenticar(cod, senha)) {
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Login ou senha incorreta! ");
-            return false;
-        }
     }
 
     public boolean adicionarProduto(String nome, String cod
